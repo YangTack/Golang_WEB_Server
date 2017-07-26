@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LOG_IN</title>
+    <link href="../static/style1.css" rel="stylesheet" type="text/css">
+</head>
+<body style="
+background: url('../static/63059569_p0.png') no-repeat;
+display: none;
+background-size: 150%;
+">
+<div>
+    <form method="post" action="/login/" style="
+        left:40%;
+        position: relative;
+        width: 260px;
+        height: 200px;
+        margin: 10px 10px;
+">
+        {% csrf_token %}
+        <div style="float: left;width: 100px;height: 80px;">
+            <p style="
+            margin: 20px 0px;
+            height: 21px;
+            line-height: 21px;
+">
+                USER:
+            </p>
+            <p style="
+            margin: 20px 0px;
+            height: 21px;
+            line-height: 21px;
+
+">
+                PASSWORD:
+            </p>
+        </div>
+        <div style="float: left;height: 80px;">
+            <input type="text" maxlength="20" name="user" style="
+        width: 150px;
+        height: 15px;
+        margin-top: 20px;
+"><br>
+
+            <input type="password" maxlength="20" name="passwd" style="
+        width: 150px;
+        height: 15px;
+        margin-top: 20px;
+"><br>
+        </div>
+
+        <input type="submit" value="LOG IN" class="a_demo_one" style="
+        left: 30%;
+        margin-top: 40px;
+        width: 80px;
+">
+    </form>
+</div>
+<script src="../static/admin/js/jquery-3.2.1.min.js"></script>
+<script src="../static/admin/js/login.js"></script>
+</body>
+</html>

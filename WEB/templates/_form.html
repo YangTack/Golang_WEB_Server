@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FILE UPLOAD</title>
+    <link href="../static/style1.css" rel="stylesheet" type="text/css">
+</head>
+<body style="
+display: none;
+background:url('../static/63059569_p0.png');
+background-size: 100%;
+">
+<script type="text/javascript">
+    function filechange(e) {
+        var str = e.toString();
+        var list_str = str.split('\\');
+        str = list_str[list_str.length - 1];
+        document.getElementById('filename').lastChild.nodeValue = str;
+    }
+</script>
+<div>
+    <form action="create/" enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+        <div title="file_title" style="position: relative;width: 300px;height: 200px;top: 0px;left: 50%">
+            <p>
+                File Title:<input type="text" maxlength="10" name="text"><br>
+            </p>
+            <input type="file" onchange="filechange(this.value)" name="file" style="display: none"><br>
+            <input type="button" class="a_demo_one" onclick="$('input:file')[0].click()" value="选择文件">
+            <p id="filename" style="color: #3bb3e0"><em>文件名称:</em>没有文件</p>
+        </div>
+        <hr>
+        <div title="file_title" style="height: 50px;left: 40%;">
+            <div style="width:auto;height:inherit;position:relative;left: 50%;">
+                <input style="width:100px;" type="submit" value="提交"
+                       class="a_demo_one">
+                {% if error %}
+                    <p style="display: inline-block;background-color: red">
+                        {{ error }}
+                    </p>
+                {% endif %}
+            </div>
+
+        </div>
+    </form>
+</div>
+<div id="show" style="display: none">
+    <input type="button" style="width: 100px;" id="show_button" class="a_demo_one" value="SHOW" onclick="show()">
+</div>
+<br>
+<div style="height: 30px;">
+    <div style="position: relative;height: inherit;left:50%;">
+        <input style="height: inherit;" type="button" class="a_demo_one" id="showA"
+               value="Show All">
+    </div>
+</div>
+<div id="showPage">
+
+</div>
+<script src="../static/admin/js/jquery-3.2.1.min.js" type="text/javascript">
+</script>
+<script src="../static/admin/js/myjs.js" type="application/javascript"></script>
+{% if direct %}
+    <script src="../static/admin/js/js.js"></script>
+{% endif %}
+</body>
+</html>
