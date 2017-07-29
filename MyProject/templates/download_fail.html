@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Download-Fail</title>
+</head>
+<script type="application/javascript">
+    var time = 3; //second
+    function load() {
+        if (time > 0) {
+            time -= 1;
+            var p_ = document.getElementById("time");
+            p_.innerText = time + " 秒后返回";
+            setTimeout(function () {
+                load();
+            }, 1000)
+        } else if (time === 0) {
+            window.history.back()
+        }
+    }
+</script>
+<body onload="load()">
+{{.Status}}<br>
+<p id="time"></p>
+</body>
+</html>

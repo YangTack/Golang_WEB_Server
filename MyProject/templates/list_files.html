@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Download List</title>
+</head>
+<body>
+<table border="1" align="center">
+    {{range $file:=.Files}}
+    <tr>
+        <th align="left">
+            FileName:{{$file.FileName}}
+        </th>
+        <th align="left">
+            FileSize:{{$file.FileSize}}
+        </th>
+        <th align="left">
+            MD5:{{$file.MD5}}
+        </th>
+        <th align="center"><a href="/download/{{$file.MD5}}/{{$file.FileName}}">下载</a></th>
+    </tr>
+    {{end}}
+</table>
+</body>
+</html>

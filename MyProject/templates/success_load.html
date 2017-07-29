@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Success</title>
+</head>
+<script type="application/javascript">
+    var second = 3;
+    function load() {
+        if (second > 0) {
+            second -= 1;
+            document.getElementById('time').innerText = second + 1 + ' 秒后返回主页面';
+            setTimeout(function () {
+                load()
+            }, 1000)
+        } else if (second === 0) {
+            setTimeout(function () {
+                window.location = '/';
+            }, 1000)
+        }
+    }
+</script>
+<body onload="load()">
+<p>{{.Msg}}</p><br>
+<p id="time">3 秒后返回主页面</p>
+<a href="/">返回</a>
+</body>
+</html>
