@@ -1,0 +1,35 @@
+<script type="application/javascript">
+    function submit_(id) {
+        ok = confirm("真的要删除此文件吗?");
+        if (ok) {
+            document.getElementById(id).submit();
+        }
+    }
+    function download_() {
+        window.location="/";
+    }
+</script>
+<table border="1">
+    <tr>
+        <th>名称</th>
+        <th>大小</th>
+        <th>MD5</th>
+        <th>下载链接</th>
+        <th>删除</th>
+    </tr>
+    {{range $f:=.Files}}
+    <tr>
+        <th>{{$f.FileName}}</th>
+        <th>{{$f.FileSize}} Byte</th>
+        <th>{{$f.MD5}}</th>
+        <th><a href="/download-list/{{$f.MD5}}" onclick="download_()">下载</a></th>
+        <th>
+            <form method="post" action="/download-list/delete" id="{{$f.MD5}}" name="{{$f.MD5}}">
+                <input type="hidden" value="{{$f.MD5}}" name="del">
+                <a onclick='submit_("{{$f.MD5}}")' href="javascript:">删除</a>
+            </form>
+        </th>
+    </tr>
+    {{end}}
+</table>
+<a href="/">上传</a>
